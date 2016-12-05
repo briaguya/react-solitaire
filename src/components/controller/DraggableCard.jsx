@@ -64,7 +64,6 @@ function collectDrop(connect, monitor) {
 export default class DraggableCard extends React.Component {
     static propTypes = {
         rank: T.oneOf(Ranks),
-        suit: T.oneOf(Object.keys(Suits)),
         upturned: T.bool
     }
 

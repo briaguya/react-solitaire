@@ -23,7 +23,6 @@ function collect(connect, monitor) {
         connectDropTarget: connect.dropTarget(),
         isOver: monitor.isOver(),
         canDrop: monitor.canDrop(),
-        suit: monitor.getItem() && monitor.getItem().suit
     };
 };
 
@@ -35,7 +34,6 @@ class SmartPile extends React.Component {
         cards: T.arrayOf(T.shape(
             {
                 rank: T.oneOf(Ranks),
-                suit: T.oneOf(Object.keys(Suits)),
                 upturned: T.bool
             }
         ))

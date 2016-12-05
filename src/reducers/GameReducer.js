@@ -7,7 +7,7 @@ import first from 'lodash/array/first';
 import flatten from 'lodash/array/flatten';
 
 export const OrderedDeck = flatten(
-    Object.keys(Suits).map(suit => Ranks.map(rank => ({ rank, suit })))
+    Ranks.map(rank => ({ rank }))
 );
 
 function getInitialState(cards) {

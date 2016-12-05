@@ -15,14 +15,12 @@ class SmartDeck extends React.Component {
             upturned: T.arrayOf(T.shape(
                 {
                     rank: T.oneOf(Ranks),
-                    suit: T.oneOf(Object.keys(Suits)),
                     upturned: T.bool
                 }
             )),
             downturned: T.arrayOf(T.shape(
                 {
                     rank: T.oneOf(Ranks),
-                    suit: T.oneOf(Object.keys(Suits)),
                     upturned: T.bool
                 }
             ))

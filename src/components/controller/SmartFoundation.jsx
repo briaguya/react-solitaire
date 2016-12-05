@@ -31,7 +31,6 @@ function collect(connect, monitor) {
 export default class SmartFoundation extends React.Component {
     static propTypes = {
         cards: T.array,
-        suit: T.oneOf(Object.keys(Suits))
     }
 
     moveCards = (card) => {

@@ -1,14 +1,12 @@
 import React, { PropTypes as T } from 'react';
 import Overlay from './Overlay.jsx';
-import SuitAndRank from './SuitAndRank.jsx';
-import SuitSymbol from './SuitSymbol.jsx';
 import RankSymbol from './RankSymbol.jsx';
 import ReactSymbol from './ReactSymbol.jsx';
 import { Shadows, Suits, Ranks, RanksValues, Colors, Dimensions, CardsLayouts } from '../../constants';
 import prefixer from 'react-prefixer';
 
 const Card =
-({rank, suit, upturned, style, isOver, canDrop, isMouseOver, isDragging}) => {
+({rank, upturned, style, isOver, canDrop, isMouseOver, isDragging}) => {
     let suitSymbols;
     let rankSymbol;
     let _style = prefixer({
@@ -16,7 +14,6 @@ const Card =
         borderRadius: Dimensions.Card.borderRadius,
         boxShadow: Shadows.Level1,
         boxSizing: 'border-box',
-        color: Colors[suit],
         fontFamily: 'Arial',
         padding: 4,
         position: 'relative',
@@ -28,7 +25,7 @@ const Card =
         ...style
     });
     if (!upturned) { return <div style={_style}><ReactSymbol color={Colors.React} /></div>; }
-    if (!rank || !suit) { return <span />; }
+    if (!rank) { return <span />; }
 
     if (isMouseOver) {
         _style = {..._style,
@@ -38,19 +35,13 @@ const Card =
     }
     if (isDragging) _style = { ..._style, opacity: .6 };
 
-    if (Array.isArray(CardsLayouts[rank])) {
-        suitSymbols = CardsLayouts[rank].map((style, i) =>
-            <SuitSymbol style={style} suit={suit} key={i} />
-        );
-    } else rankSymbol = <RankSymbol symbol={CardsLayouts[rank]} />;
-
+    if (!Array.isArray(CardsLayouts[rank])) {
+        rankSymbol = <RankSymbol symbol={CardsLayouts[rank]} />
+    };
 
     return (
         <div style={_style}>
             { isOver && <Overlay color={canDrop && Colors.OK || Colors.KO} /> }
-            <SuitAndRank suit={suit} rank={rank} position={{top: 4, left: 5}} />
-            <SuitAndRank suit={suit} rank={rank} position={{bottom: 4, right: 5}} />
-            {suitSymbols}
             {rankSymbol}
         </div>
     );
@@ -59,7 +50,6 @@ const Card =
 
 Card.propTypes = {
     rank: T.oneOf(Ranks),
-    suit: T.oneOf(Object.keys(Suits)),
     upturned: T.bool
 };
 

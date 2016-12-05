@@ -14,11 +14,9 @@ import { DevTools, DebugPanel } from 'redux-devtools/lib/react';
 import SliderMonitor from 'redux-slider-monitor';
 
 let cards = [];
-Object.keys(Suits).forEach(suit => {
     Ranks.forEach(rank => {
-        cards.push({ rank, suit })
+        cards.push({ rank })
     })
-})
 
 const finalCreateStore = compose(
   devTools(),
