@@ -45,7 +45,7 @@ ReactDOM.render(
 
 ReactDOM.render(
     <Deck>
-        <Card rank="A" suit="HEARTS" upturned/>
+        <Card rank="1" suit="HEARTS" upturned/>
     </Deck>,
     document.getElementById('deck')
 );

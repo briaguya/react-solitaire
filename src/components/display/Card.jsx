@@ -35,9 +35,7 @@ const Card =
     }
     if (isDragging) _style = { ..._style, opacity: .6 };
 
-    if (!Array.isArray(CardsLayouts[rank])) {
-        rankSymbol = <RankSymbol symbol={CardsLayouts[rank]} />
-    };
+    rankSymbol = <RankSymbol symbol={rank} />
 
     return (
         <div style={_style}>
