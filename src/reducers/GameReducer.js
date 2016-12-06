@@ -12,12 +12,6 @@ export const OrderedDeck = flatten(
 
 function getInitialState(cards) {
     return Map({
-        [Places.FOUNDATION]: Map({
-            HEARTS: List(),
-            SPADES: List(),
-            DIAMONDS: List(),
-            CLUBS: List()
-        }),
         [Places.PILE]: getPiles(cards),
         [Places.DECK]: Map({
             upturned: List(cards.slice(-1)),
@@ -29,8 +23,7 @@ function getInitialState(cards) {
 function getPiles(cards) {
     const deck = cards.slice();
     return List(range(0, 6).map(index => {
-        const pile = deck.splice(0, index + 1);
-        return List(pile.slice(0, -1).concat([{ ...pile.pop(), upturned: true}]))
+        return List([{rank:'50', upturned:true}])
     }));
 }
 

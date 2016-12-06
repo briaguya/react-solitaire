@@ -5,7 +5,6 @@ import Card from './components/display/Card.jsx';
 import { Suits, Ranks } from './constants';
 import Deck from './components/display/Deck.jsx';
 import Pile from './components/display/Pile.jsx';
-import Foundation from './components/display/Foundation.jsx';
 import { Provider } from 'react-redux';
 import { compose, createStore } from 'redux';
 import reducers from './reducers';
